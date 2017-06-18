@@ -1,0 +1,25 @@
+{
+  "name": "gitzip.org",
+  "version": "0.0.1",
+  "description": "GitZip organization website",
+  "repository": "https://github.com/KinoLien/gitzip.org.git",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production supervisor server/index.js",
+    "dev": "cross-env NODE_ENV=development supervisor server/index.js"
+  },
+  "author": "Kino",
+  "engines": {
+    "node": "6.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.3",
+    "cross-env": "^1.0.7",
+    "ejs": "^2.5.1",
+    "express": "^4.13.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.13.0",
+    "lodash": "^4.6.1"
+  }
+}
