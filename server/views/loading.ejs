@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/assets/css/please-wait.css" rel="stylesheet">
+    <link href="/assets/css/spinner.css" rel="stylesheet">
+    <link href="/assets/css/common.css" rel="stylesheet">
+</head>
+<body class="container">
+    <script type="text/javascript" src="/assets/js/please-wait.min.js"></script>
+    <script type="text/javascript">
+      window.loading_screen = window.pleaseWait({
+        logo: "",
+        backgroundColor: '#7f8c8d',
+        loadingHtml: '<p class="loading-message"><%= message %></p><div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div><div class="rect6"></div></div>',
+        color: '#5e5e5e'
+      });
+    </script>
+</body>
+</html>

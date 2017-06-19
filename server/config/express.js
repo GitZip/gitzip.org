@@ -16,8 +16,8 @@ module.exports = function (app) {
   app.disable('x-powered-by');
   app.set('views', path.join(__dirname, '..', 'views'));
   app.set('case sensitive routing', true);
-  app.set('view cache', false);
   app.set('view engine', 'ejs');
+  app.set('view cache', false);
 
   if(isProduction) {
     app.use(session({
