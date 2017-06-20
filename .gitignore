@@ -1,2 +1,3 @@
 server/config/secrets.js
 node_modules/*
+ecosystem.config.js
