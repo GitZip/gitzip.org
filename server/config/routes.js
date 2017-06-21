@@ -5,14 +5,20 @@ var path = require('path');
 
 module.exports = function(app) {
 
-
 	// =====================================
-    // Debug ========================
+    // Debug ===============================
     // =====================================
 	app.get('/debug/:name', function(req, res){
 		var name = req.params.name;
 		res.render(path.resolve(__dirname, '../', 'views/' + name + '.ejs'), { message: "test", token: '62d27e2114cc9ddab085edb073a316878f95bf5d', link: 'https://github.com/KinoLien/gitzip' } );
 	});
+
+	// =====================================
+    // Web pages ===========================
+    // =====================================
+    app.get('/', function(req, res){
+    	res.status(200).send('<h3>under construction</h3>');
+    });
 
 	// =====================================
     // Normal Files ========================
@@ -23,6 +29,10 @@ module.exports = function(app) {
         res.sendFile(path.resolve(__dirname, '../../assets', type, name));
     });
 
+
+    // =====================================
+    // Token getting Process ===============
+    // =====================================
 	app.get('/gettoken/authorize/:referrer', function(req, res){
 		// save the referrer to session
 		var referrer = req.params.referrer;
