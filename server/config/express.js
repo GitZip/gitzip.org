@@ -8,7 +8,7 @@ var secrets = require('./secrets');
 module.exports = function (app) {
   var isProduction = process.env.NODE_ENV === 'production';
   
-  app.set('port', 80);
+  // app.set('port', 80);
 
   // X-Powered-By header has no functional value.
   // Keeping it makes it easier for an attacker to build the site's profile
