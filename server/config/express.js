@@ -1,5 +1,6 @@
 // var express = require('express');
-var session = require('express-session');
+// var session = require('express-session');
+var session = require('cookie-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var path = require('path');
@@ -22,7 +23,6 @@ module.exports = function (app) {
   if(isProduction) {
     app.use(session({
       secret: secrets.session_secret,
-      resave: false,
       cookie: { maxAge: 10 * 24 * 60 * 60 * 1000 } // 10 days
     })); // session secret  
   }else{
