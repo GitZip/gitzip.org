@@ -18,8 +18,8 @@ if(isProduction){
 	var fs = require('fs');
 
 	var options = {
-		key: fs.readFileSync('/home/ubuntu/.certs/gitzip-selfsigned.key'),
-		cert: fs.readFileSync('/home/ubuntu/.certs/gitzip-selfsigned.crt')
+		key: fs.readFileSync('/home/ubuntu/.private/gitzip-zerossl.key'),
+		cert: fs.readFileSync('/home/ubuntu/.certs/gitzip-zerossl.crt')
 	};
 
 	https.createServer(options, app).listen(443);
