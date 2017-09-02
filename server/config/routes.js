@@ -17,7 +17,7 @@ module.exports = function(app) {
     // Web pages ===========================
     // =====================================
     app.get('/', function(req, res){
-    	res.status(200).send('<h3>under construction</h3>');
+    	res.sendFile(path.resolve(__dirname, '../', 'views/index.html'));
     });
 
 	// =====================================

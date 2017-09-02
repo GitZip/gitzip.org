@@ -1,0 +1,31 @@
+
+html body{
+	height: 100%;
+    position: relative;
+    background-color: #f1f1eb;
+    font-family: 'Lato',sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body{
+	font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+header{
+	z-index: 4;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 60px;
+
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+
+    background-color: rgba(255,255,255,0.8);
+}
