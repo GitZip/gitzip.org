@@ -16,10 +16,11 @@ http.createServer(app).listen(80);
 if(isProduction){
 	var https = require('https');
 	var fs = require('fs');
+	var secrets = require('./config/secrets');
 
 	var options = {
-		key: fs.readFileSync('/home/ubuntu/.private/gitzip-zerossl.key'),
-		cert: fs.readFileSync('/home/ubuntu/.certs/gitzip-zerossl.crt')
+		key: fs.readFileSync(secrets.ssl_private_key),
+		cert: fs.readFileSync(secrets.ssl_public_cert)
 	};
 
 	https.createServer(options, app).listen(443);
