@@ -25,6 +25,10 @@ module.exports = function (app) {
       secret: secrets.session_secret,
       cookie: { maxAge: 10 * 24 * 60 * 60 * 1000 } // 10 days
     })); // session secret  
+    app.use(function(req, res, next){
+      if(!req.secure) return res.redirect('https://' + req.get('host') + req.url);
+      next();
+    });
   }else{
     app.use(session({ secret: secrets.session_secret })); // session secret  
   }
