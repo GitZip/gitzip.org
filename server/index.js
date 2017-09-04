@@ -11,8 +11,6 @@ require('./config/express')(app);
 // routes
 require('./config/routes')(app);
 
-http.createServer(app).listen(80);
-
 if(isProduction){
 	var https = require('https');
 	var fs = require('fs');
@@ -24,5 +22,6 @@ if(isProduction){
 	};
 
 	https.createServer(options, app).listen(443);
+}else{
+	http.createServer(app).listen(80);
 }
-
