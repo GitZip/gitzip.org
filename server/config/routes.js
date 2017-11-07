@@ -3,6 +3,15 @@ var secrets = require('./secrets');
 var request = require('request');
 var path = require('path');
 
+function getAuthorizeUrlByScope(scope){
+	return 'https://github.com/login/oauth/authorize?' + 
+		[
+			'scope=' + scope, 
+			'client_id=' + secrets.github_client_id, 
+			'redirect_uri=' + encodeURIComponent(secrets.github_callback)
+		].join('&');
+}
+
 module.exports = function(app) {
 
 	// =====================================
@@ -36,17 +45,18 @@ module.exports = function(app) {
     // =====================================
 	app.get('/gettoken/authorize/:referrer', function(req, res){
 		// save the referrer to session
-		var referrer = req.params.referrer;
-		req.session.backto = decodeURIComponent(referrer);
+		req.session.backto = decodeURIComponent( req.params.referrer );
 
 		// do actual 
-		res.redirect('https://github.com/login/oauth/authorize?' + 
-			[
-				'scope=public_repo', 
-				'client_id=' + secrets.github_client_id, 
-				'redirect_uri=' + encodeURIComponent(secrets.github_callback)
-			].join('&')
-		);
+		res.redirect( getAuthorizeUrlByScope('public_repo') );
+	});
+
+	app.get('/gettoken/authorize/private/:referrer', function(req, res){
+		// save the referrer to session
+		req.session.backto = decodeURIComponent( req.params.referrer );
+
+		// do actual 
+		res.redirect( getAuthorizeUrlByScope('repo') );
 	});
 	
 	// authorization callback
