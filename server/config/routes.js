@@ -30,10 +30,19 @@ module.exports = function(app) {
     	else res.sendFile(path.resolve(__dirname, '../', 'views/index.html'));
     });
 
+    app.get('/:htmlname', function(req, res){
+    	var name = req.params.htmlname;
+    	if(process.env.NODE_ENV === 'production') res.status(200).send('<h3>under construction</h3>');
+    	else res.sendFile(path.resolve(__dirname, '../', 'views/' + name));
+    });
+
+
+    // http://introjs.com/  for introduce
+
 	// =====================================
     // Normal Files ========================
     // =====================================
-    app.get('/assets/:type(css|js|images)/:name', function(req, res, next) {
+    app.get('/assets/:type(css|js|images|videos)/:name', function(req, res, next) {
         var type = req.params.type;
         var name = req.params.name;
         res.sendFile(path.resolve(__dirname, '../../assets', type, name));

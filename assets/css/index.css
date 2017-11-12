@@ -1,3 +1,6 @@
+*:focus {
+    outline: none;
+}
 
 html body{
 	height: 100%;
@@ -13,7 +16,7 @@ body{
     color: #333;
 }
 
-header{
+.gz-header{
 	z-index: 4;
     position: fixed;
     left: 0;
@@ -29,3 +32,30 @@ header{
 
     background-color: rgba(255,255,255,0.8);
 }
+
+.navbar-brand{
+    padding: 7px 15px 7px 25px;
+}
+
+.jumbotron{
+    background-color: transparent;
+}
+/*
+.col-4{ width: 33.33%  }
+
+.form-control{
+    box-shadow: none;
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1.2px solid #e5e6e7;
+    border-radius: 4px;
+    color: inherit;
+    display: block;
+    padding: 6px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+
+.form-control:focus{
+    border-color: #d1d1cb;
+}*/
