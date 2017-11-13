@@ -42,7 +42,7 @@ module.exports = function(app) {
 	// =====================================
     // Normal Files ========================
     // =====================================
-    app.get('/assets/:type(css|js|images|videos)/:name', function(req, res, next) {
+    app.get('/assets/:type(css|js|images|videos|fonts)/:name', function(req, res, next) {
         var type = req.params.type;
         var name = req.params.name;
         res.sendFile(path.resolve(__dirname, '../../assets', type, name));

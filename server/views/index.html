@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GitZip Intros</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="/assets/css/simple-line-icons.css" rel="stylesheet">
     <link href="/assets/css/index.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
@@ -30,9 +31,16 @@
                 top: 0px;
             }
         }
+        .bg-white{
+            background-color: #fff;
+        }
+
+        .next-navigate a{
+            color: inherit;
+        }
+        
         .shaking-scope {
             text-align: center;
-            background-color: #fff;
             position: relative;
             overflow: hidden;
             height: 70px;
@@ -93,12 +101,7 @@
         section{
             height: 600px;
         }
-        section a:hover,
-        section a:focus,
-        section a:active,
-        section a.active {
-            text-decoration: none;
-        }
+        
         section h1{
             font-size: 40px;
         }
@@ -114,6 +117,39 @@
         section#extension .container{
             margin-bottom: 10px;
         }
+
+        section#features{
+            height: 480px;
+        }
+
+        section#features i{
+            font-size: 72px;
+            background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
+            background: linear-gradient(to left, #7b4397, #dc2430);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .feature-item{
+            background: #fff;
+            margin-top: 30px;
+            padding: 50px 30px 50px;
+            position: relative;
+            -webkit-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border-radius: 20px;
+            box-shadow: 0 2px 14px 0 rgba(0,0,0,0.1);
+            height: 300px;
+        }
+        .feature-item h2{
+            margin-bottom: 20px;
+        }
+        .feature-item p{
+            font-size: 16px;
+        }
+
         footer {
             background-color: #222222;
             padding: 25px 0;
@@ -131,17 +167,20 @@
             font-size: 12px;
             color: rgba(255, 255, 255, 0.3);
         }
-        footer ul li a:hover,
-        footer ul li a:focus,
-        footer ul li a:active,
-        footer ul li a.active {
+
+        section a:hover, .next-navigate a:hover, footer ul li a:hover,
+        section a:focus, .next-navigate a:focus, footer ul li a:focus,
+        section a:active, .next-navigate a:active, footer ul li a:active,
+        section a.active, .next-navigate a.active, footer ul li a.active {
             text-decoration: none;
         }
+        
         a.disabled{
             pointer-events: all;
             cursor: not-allowed;
             opacity: 0.4;
         }
+        
     </style>
 </head>
 <body>
@@ -162,8 +201,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li><a class="page-scroll" href="#features">Features</a></li>
                     <li><a class="page-scroll" href="#extension">Extension</a></li>
-                    <li><a class="page-scroll" href="#credits">Credits</a></li>    
                     <li><a class="page-scroll" href="#about">About</a></li>    
                 </ul>
                 
@@ -184,21 +223,63 @@
         </div>
         <div class="container my-auto">
             <div class="row text-center">
-                <div class="col-lg-12 mx-auto">
+                <div class="col-lg-12">
                     <h1>Download sub-folders/files of Github repo</h1>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
-                    <p><a class="btn btn-primary btn-lg page-scroll" href="#extension" role="button">Get Extension</a></p>
+                    <p><a class="btn btn-primary btn-lg page-scroll" href="#features" role="button">Learn More</a></p>
                 </div>
             </div>
         </div>    
     </header>    
+
+    <section id="features" class="d-flex">
+        <div class="container my-auto text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Features</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <i class="icon-bag"></i>
+                        <h2>Light</h2>
+                        <p>Download just for those few dirs/files you need instead of whole project.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <i class="icon-docs"></i>
+                        <h2>Multiple</h2>
+                        <p>Choose more than one dirs/files.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <i class="icon-bulb"></i>
+                        <h2>Intuitive</h2>
+                        <p>Just double click on items and click download button.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container next-navigate text-center">
+        <a class="page-scroll" href="#extension">
+            <h3>Get Extension</h3>
+            <div class="shaking-scope">
+                <span class="shaking-arrow glyphicon glyphicon-menu-down"></span>
+            </div>
+         </a>
+    </div>
     
     <section id="extension" class="d-flex">
         <div class="container my-auto text-center">
             <div class="row">
-                <div class="col-lg-12 mx-auto">
+                <div class="col-lg-12">
                     <h1>Get extensions for Free</h1>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
@@ -218,15 +299,18 @@
         </div>
     </section>
     
-    <div class="shaking-scope">
-        <a class="page-scroll" href="#credits"><span class="shaking-arrow glyphicon glyphicon-menu-down"></span> </a>
+    <div class="row bg-white">
+        <div class="container next-navigate text-center">
+            <a class="page-scroll" href="#about">
+                <h3>About</h3>
+                <div class="shaking-scope">
+                    <span class="shaking-arrow glyphicon glyphicon-menu-down"></span>
+                </div>
+            </a>
+        </div>
+            
     </div>
     
-
-    <section id="credits" style="background-color: #aaa;">
-
-    </section>
-
     <section id="about" style="background-color: #111;">
 
     </section>    
