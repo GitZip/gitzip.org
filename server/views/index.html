@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GitZip Intros</title>
+    <title>Introduction - GitZip</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="/assets/css/simple-line-icons.css" rel="stylesheet">
     <link href="/assets/css/index.css" rel="stylesheet">
 
@@ -107,7 +109,7 @@
         }
         section#extension{
             background-color: #fff;
-            height: 400px;
+            height: 450px;
         }
         section#extension img{
             min-height: 60px;
@@ -150,28 +152,10 @@
             font-size: 16px;
         }
 
-        footer {
-            background-color: #222222;
-            padding: 25px 0;
-            color: rgba(255, 255, 255, 0.3);
-            text-align: center;
-        }
-        footer p {
-            font-size: 12px;
-            margin: 0;
-        }
-        footer ul {
-            margin-bottom: 0;
-        }
-        footer ul li a {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        section a:hover, .next-navigate a:hover, footer ul li a:hover,
-        section a:focus, .next-navigate a:focus, footer ul li a:focus,
-        section a:active, .next-navigate a:active, footer ul li a:active,
-        section a.active, .next-navigate a.active, footer ul li a.active {
+        section a:hover, .next-navigate a:hover, 
+        section a:focus, .next-navigate a:focus, 
+        section a:active, .next-navigate a:active, 
+        section a.active, .next-navigate a.active{
             text-decoration: none;
         }
         
@@ -179,8 +163,87 @@
             pointer-events: all;
             cursor: not-allowed;
             opacity: 0.4;
+            display: inline-block;
         }
         
+        span.remove-line{
+            text-decoration:line-through;   
+        }
+
+        .full {
+            width: 100%;    
+        }
+        .gap {
+            height: 30px;
+            width: 100%;
+            clear: both;
+            display: block;
+        }
+        .footer {
+            background: #EDEFF1;
+            height: auto;
+            padding-bottom: 30px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px solid #CCCCCC;
+            border-top: 1px solid #DDDDDD;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer img {
+            max-width: 100%;
+        }
+        .footer h3 {
+            border-bottom: 1px solid #BAC1C8;
+            color: #54697E;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 27px;
+            padding: 40px 0 10px;
+            text-transform: uppercase;
+        }
+        .footer ul {
+            font-size: 13px;
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+            margin-top: 15px;
+            color: #7F8C8D;
+        }
+        .footer ul li{
+            margin-bottom: 3px;
+        }
+        .footer ul li a {
+            padding: 0 0 5px 0;
+            /*display: block;*/
+        }
+        .footer ul.credit-ul li span{
+            padding-right: 4px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #78828D
+        }
+        
+        .bg-gray {
+            background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
+            box-shadow: 0 1px 0 #B4B3B3;
+        }
+        
+        .footer-bottom {
+            background: #E3E3E3;
+            border-top: 1px solid #DDDDDD;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .footer-bottom p.pull-left {
+            padding-top: 6px;
+        }
+        .payments {
+            font-size: 1.5em;   
+        }
     </style>
 </head>
 <body>
@@ -203,7 +266,6 @@
                 <ul class="nav navbar-nav">
                     <li><a class="page-scroll" href="#features">Features</a></li>
                     <li><a class="page-scroll" href="#extension">Extension</a></li>
-                    <li><a class="page-scroll" href="#about">About</a></li>    
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
@@ -290,41 +352,59 @@
                             <img src="/assets/images/badge-chrome-340x96.png">
                         </a>
                         <!-- https://addons.mozilla.org/en-US/firefox/addon/gitzip/ -->
-                        <a data-toggle="tooltip" title="Wait for reviewing..." class="disabled">
+                        <a data-toggle="tooltip" title="Waiting for review. :-(" class="disabled">
                             <img src="/assets/images/badge-firefox-172x60.png">
                         </a>
                     </p>
+                    <p>&nbsp;</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <div class="row bg-white">
-        <div class="container next-navigate text-center">
-            <a class="page-scroll" href="#about">
-                <h3>About</h3>
-                <div class="shaking-scope">
-                    <span class="shaking-arrow glyphicon glyphicon-menu-down"></span>
-                </div>
-            </a>
-        </div>
-            
-    </div>
-    
-    <section id="about" style="background-color: #111;">
-
-    </section>    
-
     <footer>
-        <div class="container">
-            <p>&copy; 2017  Gitzip, Kino Lien All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li><a href="/privacy_policy.html">Privacy Policy</a></li>
-                <li><a href="mailto:miecowbai@gmail.com">Contact Us</a></li>
-            </ul>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4  col-md-4 col-sm-4">
+                        <h3> Sources </h3>
+                        <ul>
+                            <li> <a href="https://github.com/GitZip/gitzip.org"> Website </a> </li>
+                            <li> <a href="#"> Chrome Extension </a> </li>
+                            <li> <a href="https://github.com/GitZip/firefox-addons"> Firefox Addon </a> </li>
+                            <li> <a href="https://github.com/KinoLien/gitzip/tree/gh-pages"> GitZip Online</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4  col-md-4 col-sm-4">
+                        <h3> Credits </h3>
+                        <ul class="credit-ul">
+                            <li> <span>Inspired:</span> <a href="https://github.com/fatcloud">fatcloud</a> </li>
+                            <li> <span>Offered use cases:</span> <a href="https://github.com/julmot">Julian Motz</a>, <a href="https://github.com/zachlysobey">Zach Lysobey</a> </li>
+                            <li> <span>Logo designed:</span> <a href="https://github.com/math2001">Mathieu PATUREL</a> </li>
+                            <li> <span>Asked for plugin:</span> <a href="https://github.com/goldylucks">Adam Goldman</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4  col-md-4 col-sm-4">
+                        <h3> About &amp; Contact </h3>
+                        <ul>
+                            <li> <a href="/privacy_policy.html"> Privacy Policy </a> </li>
+                            <li><a href="mailto:miecowbai@gmail.com">Contact <span class="remove-line">Us</span> Me</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.row--> 
+            </div>
+            <!--/.container--> 
         </div>
+        <!--/.footer-->
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> © 2016-2017 Gitzip, Kino Lien. All right reserved. </p>
+            </div>
+        </div>
+        <!--/.footer-bottom--> 
     </footer>
-
+    
     <script src="/assets/js/scrolling-nav.js" type="text/javascript"></script>
 </body>
 </html>
