@@ -2,6 +2,7 @@
 var secrets = require('./secrets');
 var request = require('request');
 var path = require('path');
+var fs = require('fs');
 
 function getAuthorizeUrlByScope(scope){
 	return 'https://github.com/login/oauth/authorize?' + 
@@ -26,18 +27,19 @@ module.exports = function(app) {
     // Web pages ===========================
     // =====================================
     app.get('/', function(req, res){
-    	if(process.env.NODE_ENV === 'production') res.status(200).send('<h3>under construction</h3>');
-    	else res.sendFile(path.resolve(__dirname, '../', 'views/index.html'));
+    	res.sendFile(path.resolve(__dirname, '../', 'views/index.html'));
     });
 
     app.get('/:htmlname', function(req, res){
     	var name = req.params.htmlname;
-    	if(process.env.NODE_ENV === 'production') res.status(200).send('<h3>under construction</h3>');
-    	else res.sendFile(path.resolve(__dirname, '../', 'views/' + name));
+    	var requestPath = path.resolve(__dirname, '../', 'views/' + name);
+		if (fs.existsSync(requestPath)) {
+		    // Do something
+		    res.sendFile(requestPath);
+		}else{
+			res.status(404).send('Not found');
+		}
     });
-
-
-    // http://introjs.com/  for introduce
 
 	// =====================================
     // Normal Files ========================
@@ -45,7 +47,12 @@ module.exports = function(app) {
     app.get('/assets/:type(css|js|images|videos|fonts)/:name', function(req, res, next) {
         var type = req.params.type;
         var name = req.params.name;
-        res.sendFile(path.resolve(__dirname, '../../assets', type, name));
+        var requestPath = path.resolve(__dirname, '../../assets', type, name);
+        if (fs.existsSync(requestPath)) {
+        	res.sendFile(requestPath);
+        }else{
+        	res.status(404).send('Not found');
+        }
     });
 
 
