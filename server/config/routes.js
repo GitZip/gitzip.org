@@ -131,4 +131,12 @@ module.exports = function(app) {
 		}
 	});
 
+
+	// =====================================
+    // HTTP Validation =====================
+    // =====================================
+	app.get('/.well-known/acme-challenge/EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28', function(req, res){
+		res.status(200).send('EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28.nXaa-nYAtsuohV7jT-RT6UVUiJk8p0oO2nYF4H-1knE');
+	});
+
 };
