@@ -135,8 +135,32 @@ module.exports = function(app) {
 	// =====================================
     // HTTP Validation =====================
     // =====================================
-	app.get('/.well-known/acme-challenge/EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28', function(req, res){
-		res.status(200).send('EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28.nXaa-nYAtsuohV7jT-RT6UVUiJk8p0oO2nYF4H-1knE');
+	// app.get('/.well-known/acme-challenge/EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28', function(req, res){
+	// 	res.status(200).send('EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28.nXaa-nYAtsuohV7jT-RT6UVUiJk8p0oO2nYF4H-1knE');
+	// });
+	// Make it automatically
+	app.get('/.well-known/acme-challenge/:validatekey', function(req, res){
+		var key = req.params.validatekey;
+
+		if(key){
+			var headers = { 'Content-Type': 'text/plain' };
+			var options = {
+				url: 'https://kinolien.github.io/gitzip/verifykeys/' + key,
+			    method: 'GET',
+			    headers: headers
+			};
+
+			request(options, function (error, response, body) {
+				if (!error && response.statusCode == 200 && body) {
+			        // Print out the response body
+		        	res.status(200).send(body);
+			    }else{
+					res.status(404).send('Not found');
+			    }
+			});
+		}else{
+			res.status(404).send('Not found');
+		}
 	});
 
 };
