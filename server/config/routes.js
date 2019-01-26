@@ -4,6 +4,8 @@ var request = require('request');
 var path = require('path');
 var fs = require('fs');
 
+var isProduction = process.env.NODE_ENV === 'production';
+
 function getAuthorizeUrlByScope(scope){
 	return 'https://github.com/login/oauth/authorize?' + 
 		[
@@ -15,14 +17,16 @@ function getAuthorizeUrlByScope(scope){
 
 module.exports = function(app) {
 
-	// =====================================
-    // Debug ===============================
-    // =====================================
-	app.get('/debug/:name', function(req, res){
-		var name = req.params.name;
-		res.render(path.resolve(__dirname, '../', 'views/' + name + '.ejs'), { message: "test", token: '62d27e2114cc9ddab085edb073a316878f95bf5d', link: 'https://github.com/KinoLien/gitzip' } );
-	});
-
+	if ( !isProduction ) {
+		// =====================================
+	    // Debug ===============================
+	    // =====================================
+		app.get('/debug/:name', function(req, res){
+			var name = req.params.name;
+			res.render(path.resolve(__dirname, '../', 'views/' + name + '.ejs'), { message: "test", token: '62d27e2114cc9ddab085edb073a316878f95bf5d', link: 'https://github.com/KinoLien/gitzip' } );
+		});
+	}
+	
 	// =====================================
     // Web pages ===========================
     // =====================================
@@ -42,19 +46,9 @@ module.exports = function(app) {
     });
 
 	// =====================================
-    // Normal Files ========================
+    // Static Files ========================
     // =====================================
-    app.get('/assets/:type(css|js|images|videos|fonts)/:name', function(req, res, next) {
-        var type = req.params.type;
-        var name = req.params.name;
-        var requestPath = path.resolve(__dirname, '../../assets', type, name);
-        if (fs.existsSync(requestPath)) {
-        	res.sendFile(requestPath);
-        }else{
-        	res.status(404).send('Not found');
-        }
-    });
-
+    // Using reverse proxy Nginx
 
     // =====================================
     // Token getting Process ===============
@@ -126,38 +120,6 @@ module.exports = function(app) {
 		var link = req.session.backto;
 		if(token && link){
 			res.status(200).render(path.resolve(__dirname, '../', 'views/goback.ejs'), { token: token, link: link } );
-		}else{
-			res.status(404).send('Not found');
-		}
-	});
-
-
-	// =====================================
-    // HTTP Validation =====================
-    // =====================================
-	// app.get('/.well-known/acme-challenge/EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28', function(req, res){
-	// 	res.status(200).send('EP5oYxkkT_rae2Luh9f4Upiipya1BYxxr9xOgWWOu28.nXaa-nYAtsuohV7jT-RT6UVUiJk8p0oO2nYF4H-1knE');
-	// });
-	// Make it automatically
-	app.get('/.well-known/acme-challenge/:validatekey', function(req, res){
-		var key = req.params.validatekey;
-
-		if(key){
-			var headers = { 'Content-Type': 'text/plain' };
-			var options = {
-				url: 'https://kinolien.github.io/gitzip/verifykeys/' + key,
-			    method: 'GET',
-			    headers: headers
-			};
-
-			request(options, function (error, response, body) {
-				if (!error && response.statusCode == 200 && body) {
-			        // Print out the response body
-		        	res.status(200).send(body);
-			    }else{
-					res.status(404).send('Not found');
-			    }
-			});
 		}else{
 			res.status(404).send('Not found');
 		}
