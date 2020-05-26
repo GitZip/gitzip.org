@@ -53,32 +53,12 @@ module.exports = function(app) {
     // =====================================
     // Token getting Process ===============
     // =====================================
-    app.get('/gettoken/authorize/', function(req, res){
-    	if ( req.headers.referrer ) {
-    		req.session.backto = req.headers.referrer;
-    		// do actual 
-			res.redirect( getAuthorizeUrlByScope('public_repo') );
-    	} else {
-    		res.status(404).send('Not found');
-    	}
-    });
-
 	app.get('/gettoken/authorize/:referrer', function(req, res){
 		// save the referrer to session
 		req.session.backto = decodeURIComponent( req.params.referrer );
 
 		// do actual 
 		res.redirect( getAuthorizeUrlByScope('public_repo') );
-	});
-
-	app.get('/gettoken/authorize/private/', function(req, res){
-		if ( req.headers.referrer ) {
-    		req.session.backto = req.headers.referrer;
-    		// do actual 
-			res.redirect( getAuthorizeUrlByScope('repo') );
-    	} else {
-    		res.status(404).send('Not found');
-    	}
 	});
 
 	app.get('/gettoken/authorize/private/:referrer', function(req, res){
