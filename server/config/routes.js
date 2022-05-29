@@ -48,7 +48,19 @@ module.exports = function(app) {
 	// =====================================
     // Static Files ========================
     // =====================================
-    // Using reverse proxy Nginx
+    // Using reverse proxy Nginx in Production
+    if ( !isProduction ) {
+    	app.get('/assets/:type(css|js|images|videos|fonts)/:name', function(req, res, next) {
+	        var type = req.params.type;
+	        var name = req.params.name;
+	        var requestPath = path.resolve(__dirname, '../../assets', type, name);
+	        if (fs.existsSync(requestPath)) {
+	        	res.sendFile(requestPath);
+	        }else{
+	        	res.status(404).send('Not found');
+	        }
+	    });
+    }
 
     // =====================================
     // Token getting Process ===============
