@@ -148,6 +148,17 @@ section#features i{
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
 }
+
+section#supportus{
+    /*background-color: #fff;*/
+    height: 360px;
+}
+section#supportus img{
+    /*min-height: 80px;*/
+    height: 12vh;
+    width: auto;
+}
+
 .feature-item{
     background: #fff;
     margin-top: 30px;
